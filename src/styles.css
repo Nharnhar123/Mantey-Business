@@ -506,3 +506,58 @@ body { background: var(--paper); }
     font-size: 12px;
   }
 }
+
+:root {
+  --ink: #1d2922;
+  --navy: #174b38;
+  --red: #b8892f;
+  --paper: #e8e5da;
+  --line: #c5c9bc;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+body,
+.collection-section {
+  background: #e8e5da;
+}
+
+.category-band {
+  background: #dce3d6;
+}
+
+.category-links button:hover {
+  background: #e6ebe1;
+}
+
+.product-image-wrap {
+  background: #d0d1c7;
+}
+
+.product-info {
+  padding: 14px 10px 12px;
+  background: #e0e2d8;
+}
+
+.story-section,
+.story-copy {
+  background: #d6dfd4;
+}
+
+.story-signoff {
+  border-color: #bec9bb;
+}
+
+.site-footer {
+  background: #d8d8ce;
+}
+
+.product-label,
+.save-button,
+.quick-inquire {
+  background-color: #eeeadd;
+}
+
+.quick-inquire.is-added {
+  background-color: var(--navy);
+}
