@@ -67,11 +67,23 @@ export default function App() {
   const [enquiryItems, setEnquiryItems] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const visibleProducts = useMemo(() => products.filter((product) => {
-    const matchesCategory = activeCategory === 'All pieces' || product.category === activeCategory;
-    const matchesQuery = `${product.name} ${product.category} ${product.tone}`.toLowerCase().includes(query.trim().toLowerCase());
-    return matchesCategory && matchesQuery;
-  }), [activeCategory, query]);
+  const featuredProducts = useMemo(() => {
+    const curated = [];
+    for (const category of categories.slice(1)) {
+      const categoryProducts = products.filter((product) => product.category === category);
+      curated.push(...categoryProducts.slice(0, 2));
+    }
+    return curated;
+  }, []);
+
+  const visibleProducts = useMemo(() => {
+    const sourceProducts = activeCategory === 'All pieces' ? featuredProducts : products;
+    return sourceProducts.filter((product) => {
+      const matchesCategory = activeCategory === 'All pieces' || product.category === activeCategory;
+      const matchesQuery = `${product.name} ${product.category} ${product.tone}`.toLowerCase().includes(query.trim().toLowerCase());
+      return matchesCategory && matchesQuery;
+    });
+  }, [activeCategory, featuredProducts, query]);
   const displayedProducts = visibleProducts;
 
   const toggleSaved = (id) => setSaved((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
@@ -138,7 +150,7 @@ export default function App() {
         </section>
 
         <section className="collection-section" id="collection">
-          <div className="section-topline"><span>CURATED FOR HIM</span><span>BOADUA, GHANA · {products.length} PIECES</span></div>
+          <div className="section-topline"><span>CURATED FOR HIM</span><span>BOADUA, GHANA · {activeCategory === 'All pieces' ? featuredProducts.length : visibleProducts.length} PIECES</span></div>
           <div className="collection-heading-row" data-reveal><div><p className="eyebrow">THE GOOD-STUFF EDITION</p><h2>Wear it <em>your way.</em></h2></div><p className="collection-note">Browse style ideas across the collection. Message us to confirm current stock, sizes and colours.</p></div>
           <div className="collection-controls">
             <div className="filter-tabs" role="tablist" aria-label="Filter products by category">{categories.map((category) => <button className={activeCategory === category ? 'active' : ''} type="button" role="tab" aria-selected={activeCategory === category} key={category} onClick={() => setActiveCategory(category)}>{category}</button>)}</div>
