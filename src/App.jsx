@@ -66,34 +66,19 @@ export default function App() {
   const [saved, setSaved] = useState([]);
   const [enquiryItems, setEnquiryItems] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [displayLimit, setDisplayLimit] = useState(24);
 
   const visibleProducts = useMemo(() => products.filter((product) => {
     const matchesCategory = activeCategory === 'All pieces' || product.category === activeCategory;
     const matchesQuery = `${product.name} ${product.category} ${product.tone}`.toLowerCase().includes(query.trim().toLowerCase());
     return matchesCategory && matchesQuery;
   }), [activeCategory, query]);
-  const displayedProducts = visibleProducts.slice(0, displayLimit);
+  const displayedProducts = visibleProducts;
 
   const toggleSaved = (id) => setSaved((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
   const toggleEnquiryItem = (id) => setEnquiryItems((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
   const enquiryMessage = enquiryItems.length
     ? `Hello IMF Classic Collection, I would like to ask about these items:\n${products.filter((product) => enquiryItems.includes(product.id)).map((product) => `- ${product.name}`).join('\n')}\nPlease let me know what is available and the prices.`
     : 'Hello IMF Classic Collection, I would like help choosing an item. Please share what is available and the prices.';
-
-  const handleLoadMore = () => {
-    setDisplayLimit((limit) => {
-      const nextLimit = Math.min(limit + 24, visibleProducts.length);
-      requestAnimationFrame(() => {
-        const cards = document.querySelectorAll('.product-card');
-        const lastVisibleCard = cards[nextLimit - 1];
-        if (lastVisibleCard) {
-          lastVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
-      return nextLimit;
-    });
-  };
 
   useEffect(() => {
     const targets = document.querySelectorAll('[data-reveal]');
@@ -114,10 +99,6 @@ export default function App() {
     targets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
   }, [visibleProducts]);
-
-  useEffect(() => {
-    setDisplayLimit(24);
-  }, [activeCategory, query]);
 
   return (
     <>
@@ -168,7 +149,6 @@ export default function App() {
             </div>
           </div>
           {visibleProducts.length > 0 ? <div className="product-grid">{displayedProducts.map((product, index) => <ProductCard key={product.id} product={product} index={index} saved={saved.includes(product.id)} inEnquiry={enquiryItems.includes(product.id)} onSave={toggleSaved} onAdd={toggleEnquiryItem} />)}</div> : <div className="empty-state"><p>No pieces found for “{query}”.</p><button type="button" onClick={() => { setQuery(''); setActiveCategory('All pieces'); }}>Clear filters</button></div>}
-          {displayLimit < visibleProducts.length && <button className="load-more-button" type="button" onClick={handleLoadMore}>Load more pieces <span>{Math.min(displayLimit, visibleProducts.length)} of {visibleProducts.length}</span><ArrowDown size={16} /></button>}
           <div className="collection-bottom"><span>SHOWING {displayedProducts.length} OF {visibleProducts.length} MATCHING · {products.length} TOTAL PIECES</span><a href={whatsappUrl('Hello IMF Classic Collection, could you show me more items?')} target="_blank" rel="noreferrer">Looking for something specific? Ask us <ArrowRight size={15} /></a></div>
         </section>
 

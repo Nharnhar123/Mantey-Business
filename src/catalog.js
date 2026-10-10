@@ -97,7 +97,7 @@ for (const category of categories.slice(1)) {
         name,
         category,
         label: '',
-        image: `pexels:${options.photos[added % options.photos.length]}`,
+        image: options.photos[added % options.photos.length],
         tone: finish,
       });
       existingNames.add(name.toLowerCase());
