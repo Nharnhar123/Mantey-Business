@@ -3,9 +3,21 @@ import { ArrowDown, ArrowRight, Heart, MapPin, Menu, Search, ShoppingBag, Slider
 import { categories, products } from './catalog.js';
 
 const phone = '233546921477';
-const imageUrl = (photo, width = 760) => photo.startsWith('pexels:')
-  ? `https://images.pexels.com/photos/${photo.slice(7)}/pexels-photo-${photo.slice(7)}.jpeg?auto=compress&w=${width}&h=980&fit=crop`
-  : `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=${width}&q=85`;
+const fallbackImage = 'photo-1521572163474-6864f9cf17ab';
+const imageUrl = (photo, width = 760) => {
+  if (!photo) return `https://images.unsplash.com/${fallbackImage}?auto=format&fit=crop&w=${width}&q=85`;
+
+  const normalized = String(photo).trim();
+  if (normalized.startsWith('pexels:')) {
+    const pexelsId = normalized.slice(7);
+    if (/^\d+$/.test(pexelsId)) {
+      return `https://images.pexels.com/photos/${pexelsId}/pexels-photo-${pexelsId}.jpeg?auto=compress&w=${width}&h=980&fit=crop`;
+    }
+    return `https://images.unsplash.com/${fallbackImage}?auto=format&fit=crop&w=${width}&q=85`;
+  }
+
+  return `https://images.unsplash.com/${normalized.startsWith('photo-') ? normalized : fallbackImage}?auto=format&fit=crop&w=${width}&q=85`;
+};
 const whatsappUrl = (text) => `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
 function BrandMark() {
@@ -22,7 +34,16 @@ function ProductCard({ product, index, saved, inEnquiry, onSave, onAdd }) {
   return (
     <article className="product-card" data-reveal style={{ '--reveal-delay': `${(index % 4) * 75}ms` }}>
       <div className="product-image-wrap">
-        <img className="product-image" src={imageUrl(product.image)} alt={`${product.name} in ${product.tone}`} loading="lazy" />
+        <img
+          className="product-image"
+          src={imageUrl(product.image)}
+          alt={`${product.name} in ${product.tone}`}
+          loading="lazy"
+          onError={(event) => {
+            event.currentTarget.onerror = null;
+            event.currentTarget.src = imageUrl(fallbackImage);
+          }}
+        />
         {product.label && <span className="product-label">{product.label}</span>}
         <button className={`save-button ${saved ? 'is-saved' : ''}`} type="button" onClick={() => onSave(product.id)} aria-label={saved ? `Remove ${product.name} from saved items` : `Save ${product.name}`} title={saved ? 'Remove from saved' : 'Save item'}>
           <Heart size={17} fill={saved ? 'currentColor' : 'none'} />
@@ -59,6 +80,20 @@ export default function App() {
   const enquiryMessage = enquiryItems.length
     ? `Hello IMF Classic Collection, I would like to ask about these items:\n${products.filter((product) => enquiryItems.includes(product.id)).map((product) => `- ${product.name}`).join('\n')}\nPlease let me know what is available and the prices.`
     : 'Hello IMF Classic Collection, I would like help choosing an item. Please share what is available and the prices.';
+
+  const handleLoadMore = () => {
+    setDisplayLimit((limit) => {
+      const nextLimit = Math.min(limit + 24, visibleProducts.length);
+      requestAnimationFrame(() => {
+        const cards = document.querySelectorAll('.product-card');
+        const lastVisibleCard = cards[nextLimit - 1];
+        if (lastVisibleCard) {
+          lastVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+      return nextLimit;
+    });
+  };
 
   useEffect(() => {
     const targets = document.querySelectorAll('[data-reveal]');
@@ -133,7 +168,7 @@ export default function App() {
             </div>
           </div>
           {visibleProducts.length > 0 ? <div className="product-grid">{displayedProducts.map((product, index) => <ProductCard key={product.id} product={product} index={index} saved={saved.includes(product.id)} inEnquiry={enquiryItems.includes(product.id)} onSave={toggleSaved} onAdd={toggleEnquiryItem} />)}</div> : <div className="empty-state"><p>No pieces found for “{query}”.</p><button type="button" onClick={() => { setQuery(''); setActiveCategory('All pieces'); }}>Clear filters</button></div>}
-          {displayLimit < visibleProducts.length && <button className="load-more-button" type="button" onClick={() => setDisplayLimit((limit) => limit + 24)}>Load more pieces <span>{Math.min(displayLimit, visibleProducts.length)} of {visibleProducts.length}</span><ArrowDown size={16} /></button>}
+          {displayLimit < visibleProducts.length && <button className="load-more-button" type="button" onClick={handleLoadMore}>Load more pieces <span>{Math.min(displayLimit, visibleProducts.length)} of {visibleProducts.length}</span><ArrowDown size={16} /></button>}
           <div className="collection-bottom"><span>SHOWING {displayedProducts.length} OF {visibleProducts.length} MATCHING · {products.length} TOTAL PIECES</span><a href={whatsappUrl('Hello IMF Classic Collection, could you show me more items?')} target="_blank" rel="noreferrer">Looking for something specific? Ask us <ArrowRight size={15} /></a></div>
         </section>
 

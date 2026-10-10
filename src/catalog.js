@@ -4,47 +4,47 @@ const catalogOptions = {
   Jeans: {
     styles: ['Straight-Leg Denim', 'Relaxed Taper Denim', 'Slim-Fit Denim', 'Athletic Taper Denim', 'Wide-Leg Denim', 'Carpenter Denim', 'Utility Cargo Denim', 'Bootcut Denim', 'Distressed Denim', 'Rinse-Wash Denim'],
     finishes: ['Deep Indigo', 'Washed Black', 'Mid Blue'],
-    photos: ['16069736', '2244954', '4258605', '2229712', '15420245', '15869823', '19971478', '9775671', '28938765', '20451857', '30407915', '27348257'],
+    photos: ['photo-1541099649105-f69ad21f3246', 'photo-1521572163474-6864f9cf17ab', 'photo-1507679799987-c73779587ccf', 'photo-1555685812-4b943f1cb0eb', 'photo-1515886657613-9f3515b0c78f', 'photo-1473966968600-fa801b869a1a', 'photo-1529139574466-a303027c1d8b', 'photo-1503342217505-b0a15ec3261c', 'photo-1524504388940-b1c1722653e1', 'photo-1496747611176-843222e1e57c', 'photo-1483985988355-763728e1935b', 'photo-1487412720507-e7ab37603c6f'],
   },
   Shirts: {
     styles: ['Oxford Cloth Shirt', 'Linen Camp Shirt', 'Mandarin Collar Shirt', 'Textured Poplin Shirt', 'Classic Check Shirt', 'Short-Sleeve Resort Shirt', 'Grandad Collar Shirt', 'Fine-Stripe Shirt', 'Chambray Work Shirt', 'Soft-Twill Shirt'],
     finishes: ['Crisp White', 'Sky Blue', 'Sage Green'],
-    photos: ['1602810318383', '1598033129183', '1603252109303', '1521572163474', '1618354691373', '2244954', '5445526', '28920241', '19971478', '28900187', '2479830', '5935381'],
+    photos: ['photo-1602810318383-e386cc2a3ccf', 'photo-1598033129183-c4f50c736f10', 'photo-1603252109303-2751441dd157', 'photo-1521572267360-ee0c2909d518', 'photo-1507679799987-c73779587ccf', 'photo-1512436991641-6745cdb1723f', 'photo-1469334031218-e382a71b716b', 'photo-1504593811423-6dd665756598', 'photo-1483985988355-763728e1935b', 'photo-1562157873-818bc0726f68', 'photo-1524504388940-b1c1722653e1', 'photo-1496747611176-843222e1e57c'],
   },
   Suits: {
     styles: ['Modern Two-Piece Suit', 'Slim-Cut Suit', 'Relaxed Tailored Suit', 'Double-Breasted Suit', 'Textured Wedding Suit', 'Travel-Ready Suit', 'Three-Piece Suit', 'Unstructured Suit', 'Peak-Lapel Suit', 'Evening Dinner Suit'],
     finishes: ['Midnight Navy', 'Charcoal Grey', 'Warm Stone'],
-    photos: ['32670017', '19272491', '4651334', '6050435', '6065984', '32478288', '29722004', '35685911', '6765639', '6050428', '4611661', '32798907'],
+    photos: ['photo-1529139574466-a303027c1d8b', 'photo-1521572163474-6864f9cf17ab', 'photo-1517841905240-472988babdf9', 'photo-1515886657613-9f3515b0c78f', 'photo-1524504388940-b1c1722653e1', 'photo-1496747611176-843222e1e57c', 'photo-1507679799987-c73779587ccf', 'photo-1504593811423-6dd665756598', 'photo-1541099649105-f69ad21f3246', 'photo-1483985988355-763728e1935b', 'photo-1551028719-00167b16eac5', 'photo-1555685812-4b943f1cb0eb'],
   },
   'T-Shirts': {
     styles: ['Heavyweight Crew Tee', 'Relaxed Boxy Tee', 'Fine Jersey Tee', 'Pocket Crew Tee', 'Raglan-Sleeve Tee', 'Longline Crew Tee', 'Vintage-Wash Tee', 'Minimal Graphic Tee', 'Ribbed Cotton Tee', 'Sport Mesh Tee'],
     finishes: ['Optic White', 'Washed Black', 'Muted Olive'],
-    photos: ['15258903', '9775889', '7658459', '3290886', '17273952', '12781928', '17739736', '17439096', '34741024', '15258905', '14865823', '36942017'],
+    photos: ['photo-1521572267360-ee0c2909d518', 'photo-1521572163474-6864f9cf17ab', 'photo-1524504388940-b1c1722653e1', 'photo-1483985988355-763728e1935b', 'photo-1515886657613-9f3515b0c78f', 'photo-1541099649105-f69ad21f3246', 'photo-1503342217505-b0a15ec3261c', 'photo-1473966968600-fa801b869a1a', 'photo-1517841905240-472988babdf9', 'photo-1507679799987-c73779587ccf', 'photo-1512436991641-6745cdb1723f', 'photo-1529139574466-a303027c1d8b'],
   },
   Jackets: {
     styles: ['Leather Moto Jacket', 'Lightweight Bomber', 'Utility Field Jacket', 'Denim Trucker Jacket', 'Minimal Harrington Jacket', 'Quilted Work Jacket', 'Canvas Chore Jacket', 'Rain-Ready Shell Jacket', 'Coach Jacket', 'Suede Collar Jacket'],
     finishes: ['Classic Black', 'Olive Field', 'Cognac Brown'],
-    photos: ['7037899', '847421', '21619158', '615003', '15669734', '7679725', '31052843', '13132721', '15869823', '7834581', '6626747', '39876352'],
+    photos: ['photo-1551028719-00167b16eac5', 'photo-1524504388940-b1c1722653e1', 'photo-1504593811423-6dd665756598', 'photo-1483985988355-763728e1935b', 'photo-1515886657613-9f3515b0c78f', 'photo-1503342217505-b0a15ec3261c', 'photo-1521572163474-6864f9cf17ab', 'photo-1541099649105-f69ad21f3246', 'photo-1473966968600-fa801b869a1a', 'photo-1562157873-818bc0726f68', 'photo-1496747611176-843222e1e57c', 'photo-1529139574466-a303027c1d8b'],
   },
   Trousers: {
     styles: ['Tailored Straight Trousers', 'Tapered Chinos', 'Relaxed Pleated Trousers', 'Smart Drawstring Trousers', 'Cotton Twill Chinos', 'City Cargo Trousers', 'Linen Blend Trousers', 'Cropped Suit Trousers', 'Five-Pocket Twill Pants', 'Travel Stretch Trousers'],
     finishes: ['Khaki Stone', 'Deep Charcoal', 'Olive Green'],
-    photos: ['2897539', '9464625', '2897533', '17082930', '13339846', '19915630', '7252083', '7256412', '28452448', '19915635', '16238583', '20574052'],
+    photos: ['photo-1473966968600-fa801b869a1a', 'photo-1529139574466-a303027c1d8b', 'photo-1521572163474-6864f9cf17ab', 'photo-1507679799987-c73779587ccf', 'photo-1483985988355-763728e1935b', 'photo-1515886657613-9f3515b0c78f', 'photo-1524504388940-b1c1722653e1', 'photo-1551028719-00167b16eac5', 'photo-1503342217505-b0a15ec3261c', 'photo-1512436991641-6745cdb1723f', 'photo-1496747611176-843222e1e57c', 'photo-1541099649105-f69ad21f3246'],
   },
   Watches: {
     styles: ['Slim Dress Watch', 'Steel Link Watch', 'Field Dial Watch', 'Minimal Two-Hand Watch', 'Classic Chronograph', 'Day-Date Watch', 'Heritage Roman Watch', 'Sport Bezel Watch', 'Square-Case Watch', 'Open-Heart Dress Watch'],
     finishes: ['Black Leather', 'Brushed Steel', 'Brown Leather'],
-    photos: ['8250107', '2442893', '13597653', '380782', '3490351', '2410047', '5350692', '2783873', '18271276', '5943780', '16739804', '27691956'],
+    photos: ['photo-1523170335258-f5ed11844a49', 'photo-1546868871-7041f2a55e12', 'photo-1490367532201-b9bc1dc483f6', 'photo-1523275335684-37898b6baf30', 'photo-1508057198894-247b23fe5ade', 'photo-1434056886845-dac89ffe9b56', 'photo-1517849845537-4d257902454a', 'photo-1522312346375-d1a52e2b99b3', 'photo-1526045478516-99145907023c', 'photo-1505740420928-5e560c06d30e', 'photo-1511497584788-876760111969', 'photo-1539874754764-5a96559165b0'],
   },
   Shoes: {
     styles: ['Cap-Toe Oxford Shoes', 'Soft Leather Loafers', 'Everyday Court Sneakers', 'Suede Desert Boots', 'Classic Derby Shoes', 'Minimal Low-Top Sneakers', 'Double-Monk Shoes', 'Canvas Weekend Sneakers', 'Brogue Lace-Ups', 'Smart Chelsea Boots'],
     finishes: ['Polished Black', 'Rich Brown', 'Clean White'],
-    photos: ['9992899', '267301', '9992898', '6765524', '12210270', '292998', '29258015', '12210271', '30576967', '12031206', '27742731', '292999'],
+    photos: ['photo-1542291026-7eec264c27ff', 'photo-1525966222134-fcfa99b8ae77', 'photo-1543508282-6319a3e2621f', 'photo-1600185365483-26d7a4cc7519', 'photo-1608231387042-66d1773070a5', 'photo-1600185365926-3a2ce3cdb9eb', 'photo-1600185365483-26d7a4cc7519', 'photo-1525966222134-fcfa99b8ae77', 'photo-1543163521-1bf539c55dd2', 'photo-1549298916-b41d501d3772', 'photo-1551816230-ef5deaed4a26', 'photo-1607522370275-f14206abe5d3'],
   },
   Accessories: {
     styles: ['Classic Leather Belt', 'Reversible Dress Belt', 'Canvas Weekend Cap', 'Textured Silk Tie', 'Pocket Square Set', 'Slim Leather Wallet', 'Cufflink Pair', 'Polarized Wayfarer Frames', 'Ribbed Dress Socks', 'Leather Card Holder'],
     finishes: ['Espresso Brown', 'Matte Black', 'Navy Texture'],
-    photos: ['9221906', '9221914', '1619655', '9221913', '3944746', '16799713', '3434522', '5828579', '15302677', '32392710', '18750017', '31367058'],
+    photos: ['photo-1523170335258-f5ed11844a49', 'photo-1521572163474-6864f9cf17ab', 'photo-1515886657613-9f3515b0c78f', 'photo-1496747611176-843222e1e57c', 'photo-1483985988355-763728e1935b', 'photo-1524504388940-b1c1722653e1', 'photo-1507679799987-c73779587ccf', 'photo-1541099649105-f69ad21f3246', 'photo-1503342217505-b0a15ec3261c', 'photo-1473966968600-fa801b869a1a', 'photo-1529139574466-a303027c1d8b', 'photo-1551028719-00167b16eac5'],
   },
 };
 

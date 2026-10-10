@@ -483,13 +483,14 @@ body { background: var(--paper); }
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  transition: color .2s ease, background .2s ease, transform .2s ease;
+  transition: color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .load-more-button:hover {
   transform: translateY(-2px);
   background: var(--navy);
   color: #fff;
+  box-shadow: 0 12px 22px rgba(36, 35, 92, .12);
 }
 
 .load-more-button span {
@@ -498,6 +499,17 @@ body { background: var(--paper); }
   font-weight: 500;
   opacity: .75;
 }
+
+.product-card {
+  animation: rise-in .45s ease both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.product-card[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 
 @media (max-width: 640px) {
   .load-more-button {
